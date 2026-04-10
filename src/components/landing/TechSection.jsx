@@ -17,7 +17,7 @@ export default function TechSection() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="technology" className="py-32 px-6" style={{ background: 'rgba(8,13,24,0.4)' }}>
+    <section id="technology" className="py-16 px-6" style={{ background: 'rgba(8,13,24,0.4)' }}>
       <div className="max-w-5xl mx-auto">
         <motion.div
           ref={ref}

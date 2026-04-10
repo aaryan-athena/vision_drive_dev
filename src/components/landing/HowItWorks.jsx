@@ -58,7 +58,7 @@ export default function HowItWorks() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="how-it-works" className="py-32 px-6" style={{ background: 'rgba(8,13,24,0.5)' }}>
+    <section id="how-it-works" className="py-16 px-6" style={{ background: 'rgba(8,13,24,0.5)' }}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           ref={ref}

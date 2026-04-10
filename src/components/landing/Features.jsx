@@ -114,7 +114,7 @@ export default function Features() {
   const titleInView = useInView(titleRef, { once: true });
 
   return (
-    <section id="features" className="py-32 px-6">
+    <section id="features" className="py-16 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Section label */}
         <motion.div

@@ -1,16 +1,65 @@
-# React + Vite
+# VisionDrive
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+VisionDrive is an AI-powered traffic detection web application running entirely in your browser. It leverages TensorFlow.js and WebGL to identify vehicles, pedestrians, and traffic lights in real-time from your device's live camera feed—ensuring 100% privacy with zero server side uploads.
 
-Currently, two official plugins are available:
+## Features
+- **Traffic Light Detection:** Instantly identifies traffic signals.
+- **Vehicle Tracking:** Detects cars, trucks, buses, motorcycles, and bicycles.
+- **Pedestrian Detection:** Identifies people to support driver awareness.
+- **Real-Time Inference:** Fast object detection using WebGL hardware acceleration.
+- **100% On-Device Privacy:** Model inferences run entirely locally.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
+- **Frontend:** React (v19) + Vite
+- **Machine Learning:** TensorFlow.js, COCO-SSD, MobileNet v2 backbone
+- **Styling:** TailwindCSS (v4)
+- **Animations:** Framer Motion
 
-## React Compiler
+## Folder Structure and File Explanations
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### `src/components/landing/`
+Contains modular UI sections used strictly on the Landing Page.
+- **`Navbar.jsx` & `Footer.jsx`:** The header/footer of the landing page.
+- **`Hero.jsx`:** First impression layout with mock detections and action buttons.
+- **`Features.jsx`:** Outlines the core capabilities like traffic light and pedestrian detection.
+- **`HowItWorks.jsx`:** A step-by-step explanatory guide for the usage workflow.
+- **`Stats.jsx`:** View highlighting the efficiency of the platform.
+- **`TechSection.jsx`:** Displays the modern frameworks powering the app.
 
-## Expanding the ESLint configuration
+### `src/components/`
+Contains common or core application components.
+- **`DetectionPanel.jsx`:** A sidebar that displays categorised tracking metrics, like FPS and lists detected items with their confidence scores.
+- **`Header.jsx`:** A simple, live header inside the detection page view.
+- **`LoadingScreen.jsx`:** An overlay displayed when the web app is fetching the webcam stream or initialising the ML model.
+- **`WebcamFeed.jsx`:** Manages the video stream binding and renders the WebGL canvas with bounding boxes identifying objects.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### `src/pages/`
+The major views mapped linearly across the webapp flow.
+- **`LandingPage.jsx`:** Composes all sections from the `landing` components directory.
+- **`DetectionPage.jsx`:** Main view once launched. It integrates components like `Header`, `WebcamFeed` and `DetectionPanel` along with the detection logic hook.
+
+### `src/hooks/`
+- **`useObjectDetection.js`:** The central engine hook for loading the COCO-SSD model, pulling frames via the `requestAnimationFrame` loop, producing predictions using TensorFlow.js, and populating state variables returned to the user interface.
+
+### `src/utils/`
+- **`classifyDetection.js`:** Business logic or data parsing script aiding to classify the COCO object categories explicitly to visually tailored groups (like coloring pedestrian bounding boxes versus traffic light markers separately).
+
+## Getting Started
+
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Run Development Server:**
+   ```bash
+   npm run dev
+   ```
+
+3. **Production Build:**
+   ```bash
+   npm run build
+   ```
+
+## Privacy Notice
+VisionDrive operates using local memory bindings. Because everything relies upon the TensorFlow.js instance locally, zero frames or telemetry ever departs from your local device.

@@ -10,10 +10,7 @@ export default function LoadingScreen({ status }) {
       <div className="relative mb-8">
         <div className="relative w-20 h-20 rounded-2xl flex items-center justify-center"
           style={{ background: 'linear-gradient(135deg, #0d1525 0%, #111927 100%)', border: '1px solid rgba(56,189,248,0.2)' }}>
-          {/* Rotating ring */}
-          <div className="absolute inset-0 rounded-2xl border-2 border-transparent animate-spin-slow"
-            style={{ borderTopColor: '#38bdf8', borderRightColor: 'rgba(56,189,248,0.2)' }} />
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#logo-grad)" strokeWidth="1.5">
+          <svg className="animate-spin-slow" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#logo-grad)" strokeWidth="1.5">
             <defs>
               <linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0%" stopColor="#38bdf8"/>

@@ -37,7 +37,7 @@ export default function Stats() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section className="py-24 px-6">
+    <section className="py-12 px-6">
       <div className="max-w-5xl mx-auto">
         <motion.div
           ref={ref}
